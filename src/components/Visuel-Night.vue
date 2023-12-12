@@ -39,8 +39,8 @@ export default {
 </script>
 
 <template>
-  <div class="container d-flex flex-column justify-content-center align-items-center">
-    <h3 class="my-3 text-center">Nuit de l'excellence  2<sup>ème</sup>  édition</h3>
+  <div class="container d-flex flex-column align-items-center">
+    <h3 class="mt-5 mb-3 text-center">Nuit de l'excellence  2<sup>ème</sup>  édition</h3>
     <div class="visuel" id="visuel">
         <div class="image" :style="{backgroundImage: `url(${url_image})`}" v-if="url_image !== 'Aucun fichier choisi'"></div>
         <div class="image" v-if="url_image === 'Aucun fichier choisi'"></div>
@@ -57,7 +57,7 @@ export default {
 </template>
 <style>
 .container {
-    height: 100vh;
+    min-height: 100vh;
     color : white ;
 }
 .container .visuel {
@@ -103,7 +103,7 @@ export default {
 }
 @media (max-width: 500px) {
     .container .visuel {
-        zoom: 0.75;
+        zoom: 0.7;
     }
     .container .upload {
         width: 100%;
