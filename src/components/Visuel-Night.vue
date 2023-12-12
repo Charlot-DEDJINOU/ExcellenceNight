@@ -42,8 +42,8 @@ export default {
   <div class="container d-flex flex-column align-items-center">
     <h3 class="mt-5 mb-3 text-center">Nuit de l'excellence  2<sup>ème</sup>  édition</h3>
     <div class="visuel" id="visuel">
-        <div class="image" :style="{backgroundImage: `url(${url_image})`}" v-if="url_image !== 'Aucun fichier choisi'"></div>
-        <div class="image" v-if="url_image === 'Aucun fichier choisi'"></div>
+        <img class="image" :src="url_image" v-if="url_image !== 'Aucun fichier choisi'" />
+        <img class="image" src="../assets/robot.jpg" v-if="url_image === 'Aucun fichier choisi'" />
     </div>
     <div class="my-3 upload">
       <button class="button" id="image" @click="declancheClick">
@@ -75,9 +75,8 @@ export default {
   width: 200px;
   height: 220px;
   border: 8px solid #fdc722;
-  background-image: url(../assets/robot.jpg);
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 .container .upload {
     width: 500px;
@@ -107,10 +106,12 @@ export default {
     }
     .container .upload {
         width: 100%;
+        height: auto;
         flex-direction: column;
     }
     .container .download , .container .upload .button , i {
         width: 100%;
+        height: auto;
     }
     i {
         margin: 10px auto;
