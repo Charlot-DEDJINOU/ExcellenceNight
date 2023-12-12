@@ -11,6 +11,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "bootstrap": "^5.3.2",
+    "html2canvas": "^1.4.1",
     "vue": "^3.3.10"
   },
   "devDependencies": {
