@@ -106,7 +106,7 @@ export default {
 }
 @media (max-width: 500px) {
     .container .visuel {
-        zoom: 0.7;
+        zoom: 0.65;
     }
     .container .upload {
         width: 100%;
