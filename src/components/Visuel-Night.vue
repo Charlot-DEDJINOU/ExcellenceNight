@@ -78,7 +78,7 @@ export default {
 .container .visuel .image {
   margin: 0px 10px 50px 0px;
   width: 200px;
-  height: 250px;
+  height: 210px;
   border: 8px solid #fdc722;
   background-size: cover;
 }
