@@ -46,8 +46,8 @@ export default {
   <div class="container d-flex flex-column align-items-center">
     <h3 class="my-3 text-center">Nuit de l'excellence  2<sup>ème</sup>  édition</h3>
     <div class="visuel" id="visuel">
-        <img class="image" :src="url_image" v-if="url_image !== 'Aucun fichier choisi'" />
-        <img class="image" :src="url_image" v-if="url_image === 'Aucun fichier choisi'" />
+        <img class="image" :src="url_image" v-if="name_file.name !== 'Aucun fichier choisi'" />
+        <img class="image" src="../assets/robot.jpg" v-if="name_file.name === 'Aucun fichier choisi'" />
     </div>
     <p class="text-center my-2">Merci de choisir une photo de profil</p>
     <div class="my-3 upload">
@@ -80,7 +80,6 @@ export default {
   width: 200px;
   height: 250px;
   border: 8px solid #fdc722;
-  background-image: url(../assets/robot.jpg);
   background-size: cover;
 }
 .container .upload {
