@@ -44,19 +44,19 @@ export default {
 
 <template>
   <div class="container d-flex flex-column align-items-center">
-    <h3 class="mt-5 mb-3 text-center">Nuit de l'excellence  2<sup>ème</sup>  édition</h3>
+    <h3 class="my-3 text-center">Nuit de l'excellence  2<sup>ème</sup>  édition</h3>
     <div class="visuel" id="visuel">
         <img class="image" :src="url_image" v-if="url_image !== 'Aucun fichier choisi'" />
         <img class="image" :src="url_image" v-if="url_image === 'Aucun fichier choisi'" />
     </div>
+    <p class="text-center my-2">Merci de choisir une photo de profil</p>
     <div class="my-3 upload">
-      <p class="text-center">Merci de choisir une photo de profil</p>
       <button class="button" id="image" @click="declancheClick">
         Cliquez pour changer la photo
       </button>
       <i>{{ name_file.name }}</i>
     </div>
-    <button class="download" @click="downloadImage()">Telecharger</button>
+    <button class="download mb-5" @click="downloadImage()">Telecharger</button>
     <input type="file" id="file2" @change="InputChange" accept="image/*" hidden />
   </div>
 </template>
