@@ -5,7 +5,10 @@ import { downloadImage } from './untils'
 export default {
   name: 'VisuelNight',
   setup() {
-    const url_image = ref("Aucun fichier choisi")
+    const url_image = ref()
+    const name_file = ref({
+        name : "Aucun fichier choisi"
+    })
 
     const declancheClick = (e) => {
       e.preventDefault()
@@ -14,15 +17,15 @@ export default {
     }
 
     const InputChange = (event) => {
-      const name_file = event.target.files[0]
+      name_file.value = event.target.files[0]
 
-      if (name_file) {
+      if (name_file.value) {
         const reader = new FileReader()
         reader.onload = (e) => {
           const selectedFile = e.target.result
           url_image.value = selectedFile
         }
-        reader.readAsDataURL(name_file)
+        reader.readAsDataURL(name_file.value)
       } else {
         url_image.value = "Aucun fichier choisi"
       }
@@ -32,6 +35,7 @@ export default {
       InputChange,
       declancheClick,
       url_image,
+      name_file,
       downloadImage
     }
   }
@@ -43,13 +47,14 @@ export default {
     <h3 class="mt-5 mb-3 text-center">Nuit de l'excellence  2<sup>ème</sup>  édition</h3>
     <div class="visuel" id="visuel">
         <img class="image" :src="url_image" v-if="url_image !== 'Aucun fichier choisi'" />
-        <img class="image" src="../assets/robot.jpg" v-if="url_image === 'Aucun fichier choisi'" />
+        <img class="image" :src="url_image" v-if="url_image === 'Aucun fichier choisi'" />
     </div>
     <div class="my-3 upload">
+      <p class="text-center">Merci de choisir une photo de profil</p>
       <button class="button" id="image" @click="declancheClick">
         Cliquez pour changer la photo
       </button>
-      <i>{{ url_image }}</i>
+      <i>{{ name_file.name }}</i>
     </div>
     <button class="download" @click="downloadImage()">Telecharger</button>
     <input type="file" id="file2" @change="InputChange" accept="image/*" hidden />
@@ -73,10 +78,10 @@ export default {
 .container .visuel .image {
   margin: 0px 10px 50px 0px;
   width: 200px;
-  height: 220px;
+  height: 250px;
   border: 8px solid #fdc722;
-  object-fit: cover;
-  object-position: center;
+  background-image: url(../assets/robot.jpg);
+  background-size: cover;
 }
 .container .upload {
     width: 500px;
@@ -106,12 +111,10 @@ export default {
     }
     .container .upload {
         width: 100%;
-        height: auto;
         flex-direction: column;
     }
     .container .download , .container .upload .button , i {
         width: 100%;
-        height: auto;
     }
     i {
         margin: 10px auto;
