@@ -1,16 +1,15 @@
-import html2canvas from 'html2canvas'
+import domtoimage from 'dom-to-image';
 
-export function downloadImage(name) {
-  const element = document.getElementById('visuel')
+export const downloadImage = async () => {
+  const visuel = document.getElementById('visuel');
 
-  html2canvas(element, {
-    backgroundColor: null,
-    removeContainer: true
-  }).then((canvas) => {
-    const link = document.createElement('a')
-    if (name) link.download = name
-    else link.download = "Nuit de l'excellence"
-    link.href = canvas.toDataURL('image/png')
-    link.click()
-  })
-}
+  try {
+    const dataUrl = await domtoimage.toPng(visuel);
+    const link = document.createElement('a');
+    link.href = dataUrl;
+    link.download = "Nuit de l'excellence";
+    link.click();
+  } catch (error) {
+    console.error('Erreur lors du téléchargement de l\'image :', error);
+  }
+};
