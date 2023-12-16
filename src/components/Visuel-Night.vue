@@ -1,11 +1,12 @@
 <script>
 import { ref } from 'vue'
 import { downloadImage } from './untils'
+import robotImage from '@/assets/robot.jpg'
 
 export default {
   name: 'VisuelNight',
   setup() {
-    const url_image = ref()
+    const url_image = ref(robotImage)
     const name_file = ref({
         name : "Aucun fichier choisi"
     })
@@ -27,7 +28,7 @@ export default {
         }
         reader.readAsDataURL(name_file.value)
       } else {
-        url_image.value = "Aucun fichier choisi"
+        name_file.value = "Aucun fichier choisi"
       }
     }
 
@@ -46,8 +47,7 @@ export default {
   <div class="container d-flex flex-column align-items-center">
     <h3 class="my-3 text-center">Nuit de l'excellence  2<sup>ème</sup>  édition</h3>
     <div class="visuel" id="visuel">
-        <img class="image" :src="url_image" v-if="name_file.name !== 'Aucun fichier choisi'" />
-        <img class="image" src="../assets/robot.jpg" v-if="name_file.name === 'Aucun fichier choisi'" />
+        <img class="image" :src="url_image" />
     </div>
     <p class="text-center my-2">Merci de choisir une photo de profil</p>
     <div class="my-3 upload">
@@ -80,7 +80,7 @@ export default {
   width: 200px;
   height: 210px;
   border: 8px solid #fdc722;
-  background-size: cover;
+  object-fit : cover;
 }
 .container .upload {
     width: 500px;
