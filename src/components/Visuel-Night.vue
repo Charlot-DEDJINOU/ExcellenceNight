@@ -11,10 +11,6 @@ export default {
         name : "Aucun fichier choisi"
     })
 
-    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-
-    const zoomValue = ref(screenWidth <= 500 ? 0.65 : 1);
-
     const declancheClick = (e) => {
       e.preventDefault()
       const input_file = document.getElementById('file2')
@@ -36,32 +32,12 @@ export default {
       }
     }
 
-    const preDownloadImage = async () => {
-      const visuel = document.getElementById('visuel');
-
-      console.log(visuel)
-
-      zoomValue.value = 1;
-
-      await downloadImage();
-
-      console.log(visuel)
-
-      const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-
-      if (screenWidth <= 500) {
-        zoomValue.value = 0.65;
-      }
-    };
-
-
     return {
       InputChange,
       declancheClick,
       url_image,
       name_file,
-      zoomValue,
-      preDownloadImage
+      downloadImage
     }
   }
 }
@@ -70,7 +46,7 @@ export default {
 <template>
   <div class="container d-flex flex-column align-items-center">
     <h3 class="my-3 text-center">Nuit de l'excellence 2<sup>ème</sup> édition</h3>
-    <div class="visuel" id="visuel" :style="{ zoom: zoomValue.toString() }">
+    <div class="visuel" id="visuel">
       <img class="image" :src="url_image" />
     </div>
     <p class="text-center my-2">Merci de choisir une photo de profil</p>
@@ -80,7 +56,7 @@ export default {
       </button>
       <i>{{ name_file.name }}</i>
     </div>
-    <button class="download mb-5" @click="preDownloadImage()">Telecharger</button>
+    <button class="download mb-5" @click="downloadImage()">Telecharger</button>
     <input type="file" id="file2" @change="InputChange" accept="image/*" hidden />
   </div>
 </template>
@@ -130,6 +106,9 @@ export default {
     font-weight: 600;
 }
 @media (max-width: 500px) {
+    .container .visuel {
+      zoom: 0.65;
+    }
     .container .upload {
         width: 100%;
         flex-direction: column;

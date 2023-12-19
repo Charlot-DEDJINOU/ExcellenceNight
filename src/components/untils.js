@@ -1,15 +1,17 @@
-import domtoimage from 'dom-to-image';
+import { toPng } from 'html-to-image'
 
 export const downloadImage = async () => {
   const visuel = document.getElementById('visuel');
 
-  try {
-    const dataUrl = await domtoimage.toPng(visuel);
-    const link = document.createElement('a');
-    link.href = dataUrl;
+  toPng(visuel, { quality: 1 })
+  .then(function (dataUrl) {
+    var link = document.createElement('a');
     link.download = "Nuit de l'excellence";
+    link.href = dataUrl;
     link.click();
-  } catch (error) {
+  })
+  .catch (function(error)  {
     console.error('Erreur lors du téléchargement de l\'image :', error);
-  }
+  })
 };
+
