@@ -64,9 +64,10 @@ export default {
 <style>
 .container {
     min-height: 100vh;
+    height: auto;
     color : white ;
 }
-.container .visuel {
+.visuel {
   width: 500px;
   height: 500px;
   background-image: url(../assets/back.jpg);
@@ -76,24 +77,24 @@ export default {
   justify-content: flex-end;
   align-items: end;
 }
-.container .visuel .image {
+.visuel .image {
   margin: 0px 10px 50px 0px;
   width: 200px;
   height: 210px;
   border: 8px solid #fdc722;
   object-fit : cover;
 }
-.container .upload {
+.upload {
     width: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.container .upload i {
+.upload i {
     width: 200px;
     overflow-x: hidden;
 }
-.container .upload .button , .container .download {
+.upload .button , .download {
     background-color: #fdc722;
     color: black;
     padding: 10px ;
@@ -101,19 +102,19 @@ export default {
     border-radius: 5px;
     width: 250px;
 }
-.container .download {
+.download {
     width: 500px;
     font-weight: 600;
 }
 @media (max-width: 500px) {
-    .container .visuel {
+    .visuel {
       zoom: 0.65;
     }
-    .container .upload {
+    .upload {
         width: 100%;
         flex-direction: column;
     }
-    .container .download , .container .upload .button , i {
+    .download , .upload .button , i {
         width: 100%;
     }
     i {
